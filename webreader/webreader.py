@@ -22,7 +22,7 @@ load_dotenv()
 
 # Use latest GoogleGenAI/Gemini LLM
 gemini_llm = GoogleGenAI(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     api_key=os.getenv("GOOGLE_API_KEY")
 )
 
