@@ -15,7 +15,8 @@ from llama_index.llms.google_genai import GoogleGenAI
 from llama_index.llms.gemini import Gemini
 from llama_index.readers.web import SimpleWebPageReader
 from llama_index.core import VectorStoreIndex, Settings
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+# from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.embeddings.gemini import GeminiEmbedding
 
 # Load your keys
 load_dotenv()
@@ -27,7 +28,8 @@ gemini_llm = GoogleGenAI(
 )
 
 Settings.llm = gemini_llm
-Settings.embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
+# Settings.embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
+Settings.embed_model=GeminiEmbedding(model_name="models/embedding-001")
 
 def main(url: str) -> None:
     doc = SimpleWebPageReader(html_to_text=True).load_data(urls=[url])
